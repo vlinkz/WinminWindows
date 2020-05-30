@@ -10,3 +10,9 @@ $url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/startps.ba
 $output = "C:\Program Files\sysinternals\startps.bat"
 
 Invoke-WebRequest -Uri $url -OutFile $output
+
+setx /M path $env:PATH;"C:\Program Files\sysinternals"
+
+dism /Online /Add-Capability /CapabilityName:Windows.Desktop.EMS-SAC.Tools~~~~0.0.1.0 /NoRestart
+bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
+bcdedit /ems {current} ON
