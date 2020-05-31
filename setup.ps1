@@ -17,7 +17,7 @@ $url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/startps.ba
 $output = "C:\Program Files\sysinternals\startps.bat"
 Invoke-WebRequest -Uri $url -OutFile $output
 
-$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/Windows10SysPrepDebloater.ps1"
+$url = "https://raw.githubusercontent.com/vlinkz/Windows10Debloater/master/Windows10SysPrepDebloater.ps1"
 $output = "C:\Users\VM\Documents\Windows10SysPrepDebloater.ps1"
 Invoke-WebRequest -Uri $url -OutFile $output
 & "C:\Users\VM\Documents\Windows10SysPrepDebloater.ps1"
