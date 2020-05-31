@@ -10,12 +10,14 @@ Invoke-WebRequest -Uri $url -OutFile $output
 
 Expand-Archive -LiteralPath "C:\Users\VM\Documents\PSTools.zip" -DestinationPath "C:\Program Files\sysinternals\" -Force
 
+Remove-Item –path "C:\Users\VM\Documents\PSTools.zip"
+
 $url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/startps.bat"
 $output = "C:\Program Files\sysinternals\startps.bat"
 
 Invoke-WebRequest -Uri $url -OutFile $output
 
-setx /M path $env:PATH;"C:\Program Files\sysinternals"
+setx /M path "$env:PATH;C:\Program Files\sysinternals"
 
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name "DefaultUserName"
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name "DefaultPassword"
