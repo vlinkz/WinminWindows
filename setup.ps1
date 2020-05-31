@@ -27,17 +27,17 @@ $output = "C:\Users\VM\Documents\disable-windows-defender.ps1"
 Invoke-WebRequest -Uri $url -OutFile $output
 & "C:\Users\VM\Documents\disable-windows-defender.ps1"
 
-$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/"
+$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/features.bat"
 $output = "C:\Users\VM\Documents\features.bat"
 Invoke-WebRequest -Uri $url -OutFile $output
 & "C:\Users\VM\Documents\features.bat"
 
-$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/"
+$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/power.bat"
 $output = "C:\Users\VM\Documents\power.bat"
 Invoke-WebRequest -Uri $url -OutFile $output
 & "C:\Users\VM\Documents\power.bat"
 
-$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/"
+$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/services.bat"
 $output = "C:\Users\VM\Documents\services.bat"
 Invoke-WebRequest -Uri $url -OutFile $output
 & "C:\Users\VM\Documents\services.bat"
