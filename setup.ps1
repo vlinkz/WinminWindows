@@ -15,24 +15,35 @@ Remove-Item path "C:\Users\VM\Documents\PSTools.zip"
 
 $url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/startps.bat"
 $output = "C:\Program Files\sysinternals\startps.bat"
-
 Invoke-WebRequest -Uri $url -OutFile $output
 
-$url = "https://raw.githubusercontent.com/Sycnex/Windows10Debloater/master/Windows10SysPrepDebloater.ps1"
+$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/Windows10SysPrepDebloater.ps1"
 $output = "C:\Users\VM\Documents\Windows10SysPrepDebloater.ps1"
-
 Invoke-WebRequest -Uri $url -OutFile $output
-
 & "C:\Users\VM\Documents\Windows10SysPrepDebloater.ps1"
 
 $url = "https://raw.githubusercontent.com/W4RH4WK/Debloat-Windows-10/master/scripts/disable-windows-defender.ps1"
 $output = "C:\Users\VM\Documents\disable-windows-defender.ps1"
-
 Invoke-WebRequest -Uri $url -OutFile $output
-
 & "C:\Users\VM\Documents\disable-windows-defender.ps1"
 
-setx /M path "$env:PATH;C:\Program Files\sysinternals"
+$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/"
+$output = "C:\Users\VM\Documents\features.bat"
+Invoke-WebRequest -Uri $url -OutFile $output
+& "C:\Users\VM\Documents\features.bat"
+
+$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/"
+$output = "C:\Users\VM\Documents\power.bat"
+Invoke-WebRequest -Uri $url -OutFile $output
+& "C:\Users\VM\Documents\power.bat"
+
+$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/"
+$output = "C:\Users\VM\Documents\services.bat"
+Invoke-WebRequest -Uri $url -OutFile $output
+& "C:\Users\VM\Documents\services.bat"
+
+
+setx /M path "$env:PATH;C:\Program Files\sysinternals;C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
 
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name "DefaultUserName"
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name "DefaultPassword"
@@ -52,8 +63,6 @@ $v=(Get-ItemProperty -Path $p).Settings
 $v[8]=3
 Set-ItemProperty -Path $p -Name Settings -Value $v
 
-Stop-Process -f -ProcessName explorer
-
 dism /Online /Add-Capability /CapabilityName:Windows.Desktop.EMS-SAC.Tools~~~~0.0.1.0 /NoRestart
 bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
 bcdedit /ems ON
@@ -69,3 +78,5 @@ $output = "C:\Users\VM\Documents\OOSU10.exe"
 Invoke-WebRequest -Uri $url -OutFile $output
 
 & "C:\Users\VM\Documents\OOSU10.exe" "C:\Users\VM\Documents\ooshutup10.cfg" /nosrp /quiet
+
+Stop-Process -f -ProcessName explorer
