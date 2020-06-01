@@ -69,14 +69,18 @@ Set-ItemProperty -Path $p -Name Settings -Value $v
 
 $url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/ooshutup10.cfg"
 $output = "C:\Users\VM\Documents\ooshutup10.cfg"
-
 Invoke-WebRequest -Uri $url -OutFile $output
 
 $url = "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
 $output = "C:\Users\VM\Documents\OOSU10.exe"
-
 Invoke-WebRequest -Uri $url -OutFile $output
 
 & "C:\Users\VM\Documents\OOSU10.exe" "C:\Users\VM\Documents\ooshutup10.cfg" /nosrp /quiet
 
+$url = "https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe"
+$output = "C:\Users\VM\Documents\spice-guest-tools-latest.exe"
+Invoke-WebRequest -Uri $url -OutFile $output
+& "C:\Users\VM\Documents\spice-guest-tools-latest.exe"
+
 Stop-Process -f -ProcessName explorer
+
