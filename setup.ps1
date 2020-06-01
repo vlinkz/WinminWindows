@@ -9,16 +9,16 @@ dism /Online /Add-Capability /CapabilityName:Windows.Desktop.EMS-SAC.Tools~~~~0.
 bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
 bcdedit /ems ON
 
-$url = "https://download.sysinternals.com/files/PSTools.zip"
-$output = "C:\Users\VM\Documents\PSTools.zip"
-Invoke-WebRequest -Uri $url -OutFile $output
+#$url = "https://download.sysinternals.com/files/PSTools.zip"
+#$output = "C:\Users\VM\Documents\PSTools.zip"
+#Invoke-WebRequest -Uri $url -OutFile $output
 
-Expand-Archive -LiteralPath "C:\Users\VM\Documents\PSTools.zip" -DestinationPath "C:\Program Files\sysinternals\" -Force
+#Expand-Archive -LiteralPath "C:\Users\VM\Documents\PSTools.zip" -DestinationPath "C:\Program Files\sysinternals\" -Force
 
-Remove-Item path "C:\Users\VM\Documents\PSTools.zip"
+#Remove-Item path "C:\Users\VM\Documents\PSTools.zip"
 
 $url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/startps.bat"
-$output = "C:\Program Files\sysinternals\startps.bat"
+$output = "C:\Windows\system32\startps.bat"
 Invoke-WebRequest -Uri $url -OutFile $output
 
 $url = "https://raw.githubusercontent.com/vlinkz/Windows10Debloater/master/Windows10SysPrepDebloater.ps1"
@@ -47,7 +47,7 @@ Invoke-WebRequest -Uri $url -OutFile $output
 & "C:\Users\VM\Documents\disable-services.ps1"
 
 
-setx /M path "$env:PATH;C:\Program Files\sysinternals;C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
+setx /M path "$env:PATH;C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
 
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name "DefaultUserName"
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name "DefaultPassword"
