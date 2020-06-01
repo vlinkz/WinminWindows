@@ -37,10 +37,10 @@ $output = "C:\Users\VM\Documents\power.bat"
 Invoke-WebRequest -Uri $url -OutFile $output
 & "C:\Users\VM\Documents\power.bat"
 
-$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/services.bat"
-$output = "C:\Users\VM\Documents\services.bat"
+$url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/disable-services.ps1"
+$output = "C:\Users\VM\Documents\disable-services.ps1"
 Invoke-WebRequest -Uri $url -OutFile $output
-& "C:\Users\VM\Documents\services.bat"
+& "C:\Users\VM\Documents\disable-services.ps1"
 
 
 setx /M path "$env:PATH;C:\Program Files\sysinternals;C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
