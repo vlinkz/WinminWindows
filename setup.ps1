@@ -5,6 +5,10 @@ If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 
 Set-ExecutionPolicy Unrestricted
 
+dism /Online /Add-Capability /CapabilityName:Windows.Desktop.EMS-SAC.Tools~~~~0.0.1.0 /NoRestart
+bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
+bcdedit /ems ON
+
 $url = "https://download.sysinternals.com/files/PSTools.zip"
 $output = "C:\Users\VM\Documents\PSTools.zip"
 Invoke-WebRequest -Uri $url -OutFile $output
@@ -62,10 +66,6 @@ $p='HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3'
 $v=(Get-ItemProperty -Path $p).Settings
 $v[8]=3
 Set-ItemProperty -Path $p -Name Settings -Value $v
-
-dism /Online /Add-Capability /CapabilityName:Windows.Desktop.EMS-SAC.Tools~~~~0.0.1.0 /NoRestart
-bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
-bcdedit /ems ON
 
 $url = "https://raw.githubusercontent.com/vlinkz/WinminWindows/master/ooshutup10.cfg"
 $output = "C:\Users\VM\Documents\ooshutup10.cfg"
